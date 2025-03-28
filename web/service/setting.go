@@ -58,20 +58,20 @@ func (s *SettingService) GetAllSetting() (*entity.AllSetting, error) {
 			}
 		}()
 
-		var found bool
+		// var found bool
 		var field reflect.StructField
 		for _, f := range fields {
 			if f.Tag.Get("json") == key {
 				field = f
-				found = true
+				// found = true
 				break
 			}
 		}
 
-		if !found {
-			// 有些设置自动生成，不需要返回到前端给用户修改
-			return nil
-		}
+		// if !found {
+		// 	// 有些设置自动生成，不需要返回到前端给用户修改
+		// 	return nil
+		// }
 
 		fieldV := v.FieldByName(field.Name)
 		switch t := fieldV.Interface().(type) {
